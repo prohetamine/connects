@@ -1813,7 +1813,7 @@ node-homedir@^1.1.1:
   resolved "https://registry.yarnpkg.com/node-homedir/-/node-homedir-1.1.1.tgz#736db0b60e3bba8aba68df9927de40a7aabe1075"
   integrity sha512-Xsmf94D/DdeDISAECUaxXVxhh+kHdbOQE4CnP4igo3HXL3BSmmUpD5M7orH434EZZwBTFF2xe5SgsQr/wOBuNw==
 
-node-mermaid@^0.0.8:
+node-mermaid@latest:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/node-mermaid/-/node-mermaid-0.0.8.tgz#58b8939390f4347e73f2b6e4acbc879b017b6026"
   integrity sha512-M9C9/FGYadAs8Js7/Ib+eEHEaZ0ofOb7KGBh1qQZk1ezy2XTAZeDItjPFkGH+1HOjzqDaMFl3f5vCg8I6arqMQ==
