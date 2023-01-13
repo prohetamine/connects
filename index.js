@@ -1,7 +1,6 @@
 const path                  = require('path')
     , AppChannel            = require('node-mermaid/store/app-channel')()
     , AppTransportChannel   = require('node-mermaid/store/app-transport-channel')()
-    , _                     = require('lodash')
 
 AppChannel.on('connect', () => {
   AppTransportChannel.on('connect', () => {
