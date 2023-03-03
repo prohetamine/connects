@@ -15,31 +15,35 @@
 <body>
   <div id='main'></div>
   <script>
-    const AppTransportChannel = MermaidAppTransportChannel()
+    const init = () => {
+      const AppTransportChannel = MermaidAppTransportChannel()
 
-    AppTransportChannel.on('connect', () => {
-      AppTransportChannel.on('readData', async ({ type, data }) => {
-        if (type === 'status' && data.length > 0) {
-          document.querySelector('#main').innerHTML = data
-                                                        .sort((a, b) => a.online - b.online)
-                                                        .slice(0, 3)
-                                                        .map(site => `<div class='item'>${site.platform} <div class='${site.online ? 'ok-icon' : 'bad-icon'}'></div></div>`)
-                                                        .join('')
-                                                        +
-                                                        (s => s > 3 ? `<div style='width: 148px;'><div class='item' style='display: inline-flex;width: fit-content;'>And others (${s - 3})</div></div>` : '')(data.length)
-        }
+      AppTransportChannel.on('connect', () => {
+        AppTransportChannel.on('readData', async ({ type, data }) => {
+          if (type === 'status' && data.length > 0) {
+            document.querySelector('#main').innerHTML = data
+                                                          .sort((a, b) => a.online - b.online)
+                                                          .slice(0, 3)
+                                                          .map(site => `<div class='item'>${site.platform} <div class='${site.online ? 'ok-icon' : 'bad-icon'}'></div></div>`)
+                                                          .join('')
+                                                          +
+                                                          (s => s > 3 ? `<div style='width: 148px;'><div class='item' style='display: inline-flex;width: fit-content;'>And others (${s - 3})</div></div>` : '')(data.length)
+          }
 
-        if (type === 'reload') {
-          window.location.reload()
-        }
+          if (type === 'reload') {
+            window.location.reload()
+          }
+        })
+
+        document.querySelector('#main').innerHTML = `
+          <div class='wrapper'>
+            <div class='not-found'>Wait connects <div class='wait-icon'></div></div>
+          </div>
+        `
       })
+    }
 
-      document.querySelector('#main').innerHTML = `
-        <div class='wrapper'>
-          <div class='not-found'>Wait connects <div class='wait-icon'></div></div>
-        </div>
-      `
-    })
+    window.addEventListener('load', init)
   </script>
 </body>
 </html>
